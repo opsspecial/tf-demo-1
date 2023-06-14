@@ -13,8 +13,8 @@ provider "azurerm" {
 
 
 resource "azurerm_resource_group" "main" {
-  name     = "tf-rg"
-  location = "southindia"
+  name     = var.rg_name
+  location = var.location
 }
 
 
@@ -39,3 +39,16 @@ resource "azurerm_storage_container" "main" {
 }
 
 
+variable "rg_name" {
+  type = string
+  description = "Name for your resource Group"
+  default = "tf-rg"
+  
+}
+
+variable "location" {
+  type = string
+  description = "Azure Region where you want to create resources"
+  default = "southindia"
+  
+}
