@@ -12,7 +12,7 @@ subnets = {
 
   subnet1 = {
     name           = "public"
-    address_prefix = ["10.10.0.0/24"]
+    address_prefix = ["10.10.1.0/24"]
     security_rules = {
       rule1 = {
         name                       = "Rule1"
@@ -30,7 +30,7 @@ subnets = {
   }
   subnet2 = {
     name           = "web"
-    address_prefix = ["10.10.1.0/24"]
+    address_prefix = ["10.10.2.0/24"]
     security_rules = {
       rule1 = {
         name                       = "Rule1"
