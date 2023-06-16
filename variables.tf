@@ -69,3 +69,11 @@ variable "subnets" {
   }))
 
 }
+
+
+variable "webvm" {
+  type = object({
+    name = string
+    size = string
+    })
+}

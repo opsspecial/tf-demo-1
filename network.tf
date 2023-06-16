@@ -33,3 +33,20 @@ resource "azurerm_subnet_network_security_group_association" "main" {
   subnet_id                 = azurerm_subnet.subnets[each.key].id
   network_security_group_id = azurerm_network_security_group.main[each.key].id
 }
+
+resource "azurerm_network_security_rule" "example" {
+  for_each                    = var.subnets
+  name                        = "${each.value.name}-nsg-rule"
+  resource_group_name         = azurerm_resource_group.main.name
+  network_security_group_name = azurerm_network_security_group.main[each.key].name
+  priority                    = each.value.security_rules.rule1.priority
+  direction                   = each.value.security_rules.rule1.direction
+  access                      = each.value.security_rules.rule1.access
+  protocol                    = each.value.security_rules.rule1.protocol
+  source_port_range           = each.value.security_rules.rule1.source_port_range
+  destination_port_range      = each.value.security_rules.rule1.destination_port_range
+  source_address_prefix       = each.value.security_rules.rule1.source_address_prefix
+  destination_address_prefix  = each.value.security_rules.rule1.destination_address_prefix
+}
+
+

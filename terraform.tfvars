@@ -81,3 +81,8 @@ subnets = {
   }
 
 }
+
+webvm = {
+  name = "web-server"
+  size = "Standard_B1s"
+}
